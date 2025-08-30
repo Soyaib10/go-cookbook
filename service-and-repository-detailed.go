@@ -39,16 +39,15 @@ type MovieModel struct {
 	DB *pgxpool.Pool
 }
 
+/*
+- check for param err
+- create a context
+- write query
+- get data from db
+- bind data with destinaton struct
+- handle possible errors
+*/
 func (m MovieModel) Get(id int64) (*Movie, error) {
-	/*
-		- check for param err
-		- create a context
-		- write query
-		- get data from db
-		- bind data with destinaton struct
-		- handle possible errors
-	*/
-
 	if id < 1 {
 		return nil, ErrRecordNotFound
 	}
@@ -85,15 +84,14 @@ func (m MovieModel) Get(id int64) (*Movie, error) {
 	return &movie, nil
 }
 
+/*
+- create a context
+- write query
+- get data from db and close rows
+- bind data with destinaton struct
+- handle possible errors
+*/
 func (m MovieModel) GetAll(title string, genres []string, filters Filters) ([]*Movie, error) {
-	/*
-		- create a context
-		- write query
-		- get data from db and close rows
-		- bind data with destinaton struct
-		- handle possible errors
-	*/
-
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
@@ -133,15 +131,15 @@ func (m MovieModel) GetAll(title string, genres []string, filters Filters) ([]*M
 	return movies, nil
 }
 
-func (m MovieModel) Insert(movie *Movie) error {
-	/*
-		- create a context
-		- prepare arguments from struct
-		- execute query and return inserted row
-		- bind returned values into destination struct
-		- handle possible errors
-	*/
+/*
+	- create a context
+	- prepare arguments from struct
+	- execute query and return inserted row
+	- bind returned values into destination struct
+	- handle possible errors
+*/
 
+func (m MovieModel) Insert(movie *Movie) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
@@ -165,16 +163,15 @@ func (m MovieModel) Insert(movie *Movie) error {
 	return nil
 }
 
+/*
+- create a context
+- write query
+- prepare arguments from struct
+- execute the query (with RETURN maybe)
+- bind returned values into destination struct
+- handle possible errors
+*/
 func (m MovieModel) Update(movie *Movie) error {
-	/*
-		- create a context
-		- write query
-		- prepare arguments from struct
-		- execute the query (with RETURN maybe)
-		- bind returned values into destination struct
-		- handle possible errors
-	*/
-
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
@@ -206,17 +203,16 @@ func (m MovieModel) Update(movie *Movie) error {
 	return nil
 }
 
+/*
+- check param
+- create a context
+- write query
+- execute the query using Exec()
+- check how many rows were affected
+- if no rows affected, return ErrRecordNotFound
+- otherwise, return nil
+*/
 func (m MovieModel) Delete(id int64) error {
-	/*
-		- check param
-		- create a context 
-		- write query 
-		- execute the query using Exec()
-		- check how many rows were affected
-		- if no rows affected, return ErrRecordNotFound
-		- otherwise, return nil
-	*/
-
 	if id < 1 {
 		return ErrRecordNotFound
 	}
