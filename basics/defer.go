@@ -19,4 +19,6 @@ func main() {
 	}
 
 	fmt.Println("File written successfully")
+
+	MultipleDefer()
 }
