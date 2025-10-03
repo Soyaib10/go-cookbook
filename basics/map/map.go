@@ -27,6 +27,7 @@ func main() {
 	// Print the map.
 	fmt.Println("Updated ages:", ages)
 	Key()
+	nestedmaps()
 }
 
 func Key() {
@@ -46,5 +47,22 @@ func Key() {
 	// Iterate over a map.
 	for abbrev, city := range cities {
 		fmt.Printf("%s -> %s\n", abbrev, city)
+	}
+}
+
+func nestedmaps() {
+	departments := make(map[string]map[string]int)
+
+	// Add nested maps.
+	departments["HR"] = map[string]int{
+		"Alice": 35,
+		"Bob":   40,
+	}
+
+	// Retrieve a nested map.
+	if hrDept, exists := departments["HR"]; exists {
+		for name, age := range hrDept {
+			fmt.Printf("%s in HR is %d years old.\n", name, age)
+		}
 	}
 }
