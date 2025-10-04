@@ -8,6 +8,7 @@ func main() {
 	fmt.Println(slice) // Output: [0 0 0].
 
 	slicing()
+	appending()
 }
 
 func slicing() {	
@@ -15,4 +16,14 @@ func slicing() {
 	// Create a slice from the array.
 	slice := arr[1:4]
 	fmt.Println(slice) // Output: [2 3 4].
+}
+
+func appending() {
+	// Initial slice.
+	slice := []int{1, 2, 3}
+	// Append one element.
+	slice = append(slice, 4)
+	// Append multiple elements.
+	slice = append(slice, 5, 6, 7)
+	fmt.Println(slice) // Output: [1 2 3 4 5 6 7].
 }
