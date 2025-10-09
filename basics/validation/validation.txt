@@ -1,0 +1,11 @@
+Best Practices
+Layered Validation: Conduct input validation at multiple layers of your application (e.g., HTTP handlers, service layers).
+Use Third-party Libraries: Leverage libraries like validator for complex validation needs.
+Regular Expressions: Use regular expressions judiciously, as they can be complex and lead to performance issues if not optimized.
+Input Sanitization: Sanitize input to prevent injection attacks.
+
+Common Pitfalls
+Over-reliance on Client-side Validation: Always validate server-side in addition to client-side validation logic.
+Ignoring Edge Cases: Consider edge cases like maximum length, unexpected symbols, or binary characters.
+Not Handling Errors Appropriately: Ensure validation errors are handled gracefully and provide informative feedback to users.
+
