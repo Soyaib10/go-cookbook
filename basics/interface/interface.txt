@@ -1,0 +1,10 @@
+Best Practices
+Keep interfaces small and focused.
+Use interface names that reflect what they do, often by using verbs like Reader, Writer, or Formatter.
+Utilize type assertion only when necessary, and handle cases where it might fail gracefully.
+
+
+Common Pitfalls
+Avoid large interfaces; they make code less flexible and harder to test.
+Don't mix interface and concrete type methods within the same implementation scope.
+For beginners, understanding error messages related to interface satisfaction can be non-intuitive. Carefully match method signatures.
