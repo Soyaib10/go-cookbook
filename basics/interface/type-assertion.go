@@ -28,5 +28,5 @@ func checkVehicle(v Vehicle) {
 func main() {
 	var v Vehicle
 	v = Car{Model: "Renault"}
-	checkVehicle(v)  // Output: Car model: Renault
+	checkVehicle(v) // Output: Car model: Renault
 }
