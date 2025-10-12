@@ -1,0 +1,10 @@
+Best Practices
+Use pointers for large structs or when functions need to modify the original data.
+Always check pointer validity and handle nil pointers to prevent runtime panics.
+Consider using interfaces if the exact data type isn't necessary, lowering coupling.
+
+
+Common Pitfalls
+Dereferencing a nil pointer leads to runtime panic; always ensure pointers are initialized.
+Avoid excessive use of pointers that can complicate simple value-based data structures.
+Incorrectly assuming addresses of variables remain constant; they might change as programs scale.
