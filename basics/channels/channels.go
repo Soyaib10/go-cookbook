@@ -6,6 +6,7 @@ import (
 
 func main() {
 	basic()
+	buffer()
 }
 
 func basic() {
@@ -17,4 +18,14 @@ func basic() {
 
 	msg := <-ch
 	fmt.Println(msg)
+}
+
+func buffer() {
+	ch := make(chan int, 2)
+
+	ch <- 42
+	ch <- 73
+
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
 }
