@@ -1,0 +1,11 @@
+Best Practices
+Always close channels from the sender's side.
+Use buffered channels only when performance benefits outweigh increased complexity.
+Prefer using the select statement for cases where multiple channel operations may block.
+Avoid using channels as mutexes; they are meant for communication, not locking.
+
+
+Common Pitfalls
+Leaving a channel open when it's no longer needed can lead to resource leaks or deadlocks.
+Overusing buffered channels can result in unexpected memory consumption.
+Forgetting to check for closed channels can lead to receiving zero values, causing logic errors.
