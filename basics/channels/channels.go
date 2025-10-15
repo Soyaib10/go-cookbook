@@ -7,6 +7,7 @@ import (
 func main() {
 	basic()
 	buffer()
+	closingChannel()
 }
 
 func basic() {
@@ -28,4 +29,20 @@ func buffer() {
 
 	fmt.Println(<-ch)
 	fmt.Println(<-ch)
+}
+
+
+func closingChannel() {
+	ch := make(chan int)
+
+	go func() {
+		for i := 0; i < 5; i++ {
+			ch <- i
+		}
+		close(ch)
+	}()
+
+	for v := range ch {
+		fmt.Println(v)
+	}
 }
