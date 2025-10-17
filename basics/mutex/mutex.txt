@@ -1,0 +1,9 @@
+Best Practices
+Use sync.Mutex for critical sections where both read and write access must be safe.
+Prefer sync.RWMutex for data structures where reads significantly outnumber writes, to allow parallel reads.
+Consider using sync.Map for highly concurrent scenarios, but be aware that its performance might not always be better than a map with explicit locking.
+
+Common Pitfalls
+Forgetting to unlock a Mutex or RWMutex when a function returns early can lead to deadlocks.
+Using sync.Map for all scenarios indiscriminately, as it may not always provide the best performance due to increased operational overhead.
+Incorrectly assuming map is safe for concurrent read/writes without synchronization, which leads to subtle race conditions.
