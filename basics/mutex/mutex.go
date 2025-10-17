@@ -8,6 +8,7 @@ import (
 func main() {
 	mapWithMutex()
 	RWMutex()
+	suncmap()
 }
 
 func mapWithMutex() {
@@ -58,3 +59,22 @@ func RWMutex() {
 	wg.Wait()
 }
 
+func suncmap() {
+	var sm sync.Map
+
+	wg := sync.WaitGroup{}
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			sm.Store(fmt.Sprintf("task%d", i), i)
+		}(i)
+	}
+
+	wg.Wait()
+
+	sm.Range(func(key, value interface{}) bool {
+		fmt.Printf("%s: %d\n", key, value)
+		return true
+	})
+}
