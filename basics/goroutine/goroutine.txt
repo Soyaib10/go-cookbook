@@ -1,0 +1,12 @@
+Best Practices
+Synchronization: Use synchronization primitives like channels, wait groups, or mutexes to coordinate goroutines.
+Channel Avoidance: Avoid using channels for excessive internal communication; prefer shared memory with proper synchronization.
+Cancellation: Implement cancellation for goroutines using contexts to avoid goroutines running indefinitely.
+Resource Limitation: Limit the number of active goroutines to control resource consumption effectively.
+
+
+Common Pitfalls
+Resource Leaks: Goroutines can cause memory leaks if they block indefinitely. Ensure proper cleanup by closing channels or using timeouts.
+Race Conditions: Without synchronization, shared data may lead to race conditions. Use the sync package to protect shared resources.
+Deadlocks: Pay attention to blocking operations like channel sends/receives which can lead to deadlocks if not managed appropriately.
+Panic Handling: Uncaught panics in goroutines may terminate the program. Use recover to handle them safely in production.
