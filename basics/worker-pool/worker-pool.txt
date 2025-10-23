@@ -1,0 +1,14 @@
+Best Practices
+Use buffered channels to avoid blocking sends when the number of jobs is small compared to the number of workers.
+Use a sync.WaitGroup to ensure all workers complete their tasks before closing the results channel.
+Ensure proper closing of the jobs channel once all jobs have been dispatched.
+Consider error handling mechanisms for failed tasks within workers.
+Dynamically adjust the number of workers based on available system resources and/or limits (for example, when doing logs of parallel requests).
+
+
+Common Pitfalls
+Forgetting to close the jobs channel, leading to deadlock.
+Not using a sync.WaitGroup, making it harder to coordinate the completion of all tasks.
+Starting too many goroutines, which might lead to resource exhaustion.
+Blocking on results channel reading due to an incorrect number of expected results.
+Not handling errors inside worker function properly, which can make debugging difficult.
