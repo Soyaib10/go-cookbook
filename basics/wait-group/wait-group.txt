@@ -1,0 +1,12 @@
+Best Practices
+Always call wg.Done() inside a goroutine to signal completion, ideally using defer wg.Done() at the start of the goroutine to ensure it gets called.
+Use wg.Add() before starting a goroutine to increment the counter, making sure all goroutines are accounted for.
+Always pass pointers to the wait group (*sync.WaitGroup) to goroutines to avoid copying.
+Properly close any channels used to communicate errors or data between goroutines.
+
+
+Common Pitfalls
+Forgetting to decrement the counter using wg.Done(), leading to deadlocks.
+Not using wg.Wait() on the main goroutine to block until all worker goroutines are complete.
+Accidentally over- or under-counting wg.Add(), which can lead to the Wait() call waiting indefinitely or returning too early.
+Failing to handle errors that occur within goroutines, which can lead to silent failures.
