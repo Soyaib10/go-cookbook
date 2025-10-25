@@ -1,0 +1,10 @@
+Best Practices
+Set a Reasonable Timeout: Consider setting a timeout that balances responsiveness with allowing enough time for slow network conditions.
+Specific Transport Configuration: Use the http.Transport settings to control specific phases (e.g., Dial, TLS handshake).
+Use Contexts for Server Request Timeouts: When writing an HTTP server, use contexts to manage and propagate timeouts and cancellations.
+
+
+Common Pitfalls
+Omitting Timeout: Failing to set a timeout may lead to indefinite hangs, especially on unreliable networks.
+Overly Short Timeouts: Extremely short timeouts can lead to frequent errors in less-than-ideal network conditions.
+Only Using Timeout Field: Relying solely on the Timeout field doesn't allow for fine-tuning different stages of the request process.
