@@ -1,0 +1,11 @@
+Best Practices
+Serve static content from a dedicated directory to avoid exposing unintended files.
+Use http.StripPrefix judiciously to serve files correctly from nested directories.
+Set proper cache headers for static files to improve client-side performance.
+Secure the server by limiting the file types served, if necessary.
+
+
+Common Pitfalls
+Incorrect directory paths can result in 404 Not Found errors; ensure the file paths specified match the directory layout.
+Failing to use http.StripPrefix when serving from a subdirectory can result in mismatch errors.
+Allowing public access to sensitive files by placing them in the same directory as static content.
