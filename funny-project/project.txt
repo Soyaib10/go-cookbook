@@ -1,0 +1,15 @@
+Best Practices
+Use TAR for Unix/Linux environments and ZIP for cross-platform compatibility.
+Validate file paths during extraction to prevent directory traversal attacks.
+Use compression (zip.Deflate) for better space efficiency in ZIP archives.
+
+
+Common Pitfalls
+Not handling directory creation during extraction, leading to failed file creation.
+Forgetting to close archive writers, which may result in incomplete archives.
+Not sanitizing file paths during extraction, creating security vulnerabilities.
+Performance Tips
+Use buffered I/O for large files to improve archive creation and extraction speed.
+Consider parallel processing for multiple independent files in large archives.
+Choose appropriate compression levels based on the trade-off between speed and size.
+Pre-allocate buffers for I/O operations when processing many files.
