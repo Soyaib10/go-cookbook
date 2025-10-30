@@ -1,0 +1,10 @@
+Best Practices
+Provide user-friendly error messages and application usage information.
+Keep commands modular and use subcommands for better organization.
+Make use of external libraries when advanced features are necessary, but keep dependencies minimal.
+
+
+Common Pitfalls
+Not validating user inputs properly, leading to potential runtime errors.
+Ignoring return values or errors, which might cause unhandled exceptions when the application runs.
+Poor command organization leading to a confusing and non-intuitive CLI.
